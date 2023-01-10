@@ -38,20 +38,21 @@ function sumArray(numberSet)
 //function validateCred uses the Luhn algorithm to determine whether a number is valid or not.
 function validateCred(inputArray)
 {
+	const copyArray = Array.from(inputArray);  //we make a new array which is a copy of inputArray.  We do this because otherwise we'll end up modifying inputArray later.  Arrays are objects, which means if you make a new variable for them, they still reference the same array.  You have to make a totally new one.
 	let everyOther = true; //we'll use this to go through every other element (not each one)
-	for (let i = inputArray.length-2; i >= 0; i--) //we start at the second-to-last element in the array
+	for (let i = copyArray.length-2; i >= 0; i--) //we start at the second-to-last element in the array
 	{
 		if (everyOther === true)
 		{
-			inputArray[i] *= 2; //multiply the element by two.  if the result is higher than 9, subtract 9 from it.
-			if (inputArray[i] > 9)
+			copyArray[i] *= 2; //multiply the element by two.  if the result is higher than 9, subtract 9 from it.
+			if (copyArray[i] > 9)
 			{
-				inputArray[i] -= 9;
+				copyArray[i] -= 9;
 			}
 		}
 		everyOther = !everyOther; //flip everyOther
 	}
-	let inputSum = sumArray(inputArray);
+	let inputSum = sumArray(copyArray);
 	if (inputSum % 10 === 0)
 	{
 		return true;
@@ -61,32 +62,34 @@ function validateCred(inputArray)
 	}
 }
 
-// console.log(validateCred(invalid1));
-// console.log(validateCred(invalid2));
-// console.log(validateCred(invalid3));
-// console.log(validateCred(invalid4));
-// console.log(validateCred(invalid5));
+console.log(validateCred(invalid1));
+console.log(validateCred(invalid2));
+console.log(validateCred(invalid3));
+console.log(validateCred(invalid4));
+console.log(validateCred(invalid5));
 
 //function findInvalidSets() takes a nested array (such as batch above) of numbers, go through each element, determines if it is invalid, and adds it to a new array which is a collection of all number sets found to be invalid.  It then returns that new array.
-//This function is not currently working as expected.  Every time the if statement on line 78 evaluates truthy, it reassigns part of the testSet input, and I'm not sure why.
-function findInvalidSets(testSet)
+function findInvalidSets(inputArray)
 {
+	const copyArray = Array.from(inputArray);
 	let outputArray = [];
-	for (let i = 0; i < testSet.length; i++)
+	for (let i = 0; i < copyArray.length; i++)
 	{
-		let currentSet = testSet[i];
-		if (validateCred(currentSet) === false)
+		if (validateCred(copyArray[i]) === false)
 		{
-			outputArray.push(currentSet);
+			outputArray.push(copyArray[i]);
 		}
 	}
 	return outputArray;
 }
 
+console.log(findInvalidSets(batch));
+
 function idInvalidCardCompanies(inputArray)
 {
 	let companies = [];
-	inputArray.forEach(function(element)
+	const copyArray = Array.from(inputArray);
+	copyArray.forEach(function(element)
 	{
 		switch(element[0]) {
 			case 3:
@@ -132,4 +135,4 @@ function idInvalidCardCompanies(inputArray)
 	return companies;
 }
 
-console.log(idInvalidCardCompanies(batch));
+

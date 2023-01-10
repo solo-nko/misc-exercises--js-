@@ -24,31 +24,32 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
-function calculateSum(inputSet)
+function sumArray(numberSet)
 {
-	return inputSet.reduce(function(total, current)
-	{
-		return total + current;
-	}, 0);
+	let sum = 0;
+	numberSet.forEach(element => {
+		sum += element;
+	});
+	return sum;
 }
 
 //function validateCred uses the Luhn algorithm to determine whether a number is valid or not.
 function validateCred(inputArray)
 {
-	let everyOther = true;
-	for (let i = inputArray.length-2; i >= 0; i--)
+	let everyOther = true; //we'll use this to go through every other element (not each one)
+	for (let i = inputArray.length-2; i >= 0; i--) //we start at the second-to-last element in the array
 	{
 		if (everyOther === true)
 		{
-			inputArray[i] *= 2;
+			inputArray[i] *= 2; //multiply the element by two.  if the result is higher than 9, subtract 9 from it.
 			if (inputArray[i] > 9)
 			{
 				inputArray[i] -= 9;
 			}
 		}
-		everyOther = !everyOther;
+		everyOther = !everyOther; //flip everyOther
 	}
-	let inputSum = calculateSum(inputArray);
+	let inputSum = sumArray(inputArray);
 	if (inputSum % 10 == 0)
 	{
 		return true;
@@ -58,16 +59,15 @@ function validateCred(inputArray)
 	}
 }
 
-console.log(validateCred(invalid1));
-console.log(validateCred(invalid2));
-console.log(validateCred(invalid3));
-console.log(validateCred(invalid4));
-console.log(validateCred(invalid5));
+// console.log(validateCred(invalid1));
+// console.log(validateCred(invalid2));
+// console.log(validateCred(invalid3));
+// console.log(validateCred(invalid4));
+// console.log(validateCred(invalid5));
 
 function findInvalidSets(testSet)
 {
 	const outputArray = [];
-	let isValid = true;
 	for (let i = 0; i < testSet.length; i++)
 	{
 		let currentSet = testSet[i];
@@ -79,3 +79,4 @@ function findInvalidSets(testSet)
 	return outputArray;
 }
 
+console.log(findInvalidSets(batch));

@@ -35,24 +35,20 @@ function calculateSum(inputSet)
 //function validateCred uses the Luhn algorithm to determine whether a number is valid or not.
 function validateCred(inputArray)
 {
-	let testArray = inputArray;
-	let finalIndex = inputArray.length - 1;
-	let testNum;
 	let everyOther = true;
-	for (let i = inputArray-2; i >= 0; i--)
+	for (let i = inputArray.length-2; i >= 0; i--)
 	{
-		if (everyOther == true)
+		if (everyOther === true)
 		{
-			testNum = inputArray[i]*2;
-			if (testNum > 9)
+			inputArray[i] *= 2;
+			if (inputArray[i] > 9)
 			{
-				testNum -= 9;
+				inputArray[i] -= 9;
 			}
-			testArray[i] = testNum;
 		}
 		everyOther = !everyOther;
 	}
-	let inputSum = calculateSum(testArray);
+	let inputSum = calculateSum(inputArray);
 	if (inputSum % 10 == 0)
 	{
 		return true;
@@ -63,6 +59,10 @@ function validateCred(inputArray)
 }
 
 console.log(validateCred(invalid1));
+console.log(validateCred(invalid2));
+console.log(validateCred(invalid3));
+console.log(validateCred(invalid4));
+console.log(validateCred(invalid5));
 
 function findInvalidSets(testSet)
 {

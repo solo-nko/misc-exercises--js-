@@ -24,10 +24,12 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+
+//sumArray's purpose is to take an array of numbers and return the sum of those numbers.
 function sumArray(numberSet)
 {
 	let sum = 0;
-	numberSet.forEach(element => {
+	numberSet.forEach(element => { //add each element to the sum, one after the other
 		sum += element;
 	});
 	return sum;
@@ -50,7 +52,7 @@ function validateCred(inputArray)
 		everyOther = !everyOther; //flip everyOther
 	}
 	let inputSum = sumArray(inputArray);
-	if (inputSum % 10 == 0)
+	if (inputSum % 10 === 0)
 	{
 		return true;
 	} else
@@ -65,9 +67,11 @@ function validateCred(inputArray)
 // console.log(validateCred(invalid4));
 // console.log(validateCred(invalid5));
 
+//function findInvalidSets() takes a nested array (such as batch above) of numbers, go through each element, determines if it is invalid, and adds it to a new array which is a collection of all number sets found to be invalid.  It then returns that new array.
+//This function is not currently working as expected.  Every time the if statement on line 78 evaluates truthy, it reassigns part of the testSet input, and I'm not sure why.
 function findInvalidSets(testSet)
 {
-	const outputArray = [];
+	let outputArray = [];
 	for (let i = 0; i < testSet.length; i++)
 	{
 		let currentSet = testSet[i];
@@ -79,4 +83,53 @@ function findInvalidSets(testSet)
 	return outputArray;
 }
 
-console.log(findInvalidSets(batch));
+function idInvalidCardCompanies(inputArray)
+{
+	let companies = [];
+	inputArray.forEach(function(element)
+	{
+		switch(element[0]) {
+			case 3:
+				if (companies.includes('Amex'))
+				{
+					break;
+				} else
+				{
+					companies.push('Amex');
+					break;
+				}
+			case 4:
+				if (companies.includes('Visa'))
+				{
+					break;
+				} else
+				{
+					companies.push('Visa');
+					break;
+				}
+			case 5:
+			if (companies.includes('Mastercard'))
+			{
+				break;
+			} else
+			{
+				companies.push('Mastercard');
+				break;
+			}
+			case 6:
+				if (companies.includes('Discover'))
+				{
+					break;
+				} else
+				{
+					companies.push('Discover');
+					break;
+				}
+			default:
+				companies.push("Unknown");
+		}
+	})
+	return companies;
+}
+
+console.log(idInvalidCardCompanies(batch));

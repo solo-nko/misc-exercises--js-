@@ -13,8 +13,6 @@ const returnRandBase = () => {
     return newStrand;
   };
 
-  console.log(mockUpStrand());
-
   function pAequorFactory(numVal, dnaVal = mockUpStrand())
   {
     return {
@@ -49,6 +47,10 @@ const returnRandBase = () => {
 				console.log(`Specimen #${numVal} and Specimen #${otherSpecimen.specimenNum} do not share any DNA.`);
 			}
         },
+		willLikelySurvive(){ //work in progress
+			let survivalBases = ['C','G'];
+			let percentage =
+		},
 		get dna(){
 			return this._dna;
 		},
@@ -57,3 +59,9 @@ const returnRandBase = () => {
 		}
     };
   };
+
+  let specimenZero = pAequorFactory(0);
+
+  let specimenZeroTwo = pAequorFactory(2);
+
+  specimenZero.compareDNA(specimenZeroTwo);

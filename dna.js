@@ -12,3 +12,20 @@ const returnRandBase = () => {
     }
     return newStrand;
   };
+
+  console.log(mockUpStrand());
+
+  function pAequorFactory(numVal, dnaVal)
+  {
+    return {
+        specimenNum: numVal,
+        dna: dnaVal,
+        mutate(){
+            let sample = this.dna;
+            while(sample === this.dna) {
+                sample = returnRandBase();
+            }
+            this.dna = sample;
+        }
+    };
+  };

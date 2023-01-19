@@ -47,9 +47,23 @@ const returnRandBase = () => {
 				console.log(`Specimen #${numVal} and Specimen #${otherSpecimen.specimenNum} do not share any DNA.`);
 			}
         },
-		willLikelySurvive(){ //work in progress
-			let survivalBases = ['C','G'];
-			let percentage =
+		willLikelySurvive(){ //not yet tested
+			let counter = 0;
+      this.dna.forEach(function(element)
+      {
+        if (element === 'C' || element === 'G')
+        {
+          counter++;                    
+        }
+      });
+      let survivalOdds = ((counter/this.dna.length).toFixed(2))*100;
+      if (survivalOdds >= 60)
+      {
+        return true;
+      } else
+      {
+        return false;
+      }
 		},
 		get dna(){
 			return this._dna;
@@ -60,8 +74,22 @@ const returnRandBase = () => {
     };
   };
 
-  let specimenZero = pAequorFactory(0);
+// let specimenZero = pAequorFactory(0);
+// let specimenZeroTwo = pAequorFactory(2);
+// specimenZero.compareDNA(specimenZeroTwo);
 
-  let specimenZeroTwo = pAequorFactory(2);
 
-  specimenZero.compareDNA(specimenZeroTwo);
+let survivableOrganisms = [];
+let subjectNumber = 0;
+while (survivableOrganisms.length < 30)
+{
+  let testOrganism = pAequorFactory(subjectNumber);
+  if (testOrganism.willLikelySurvive() === true)
+  {
+    survivableOrganisms.push(testOrganism);
+  }
+  subjectNumber++;
+}
+
+console.log(survivableOrganisms);
+console.log("Test");

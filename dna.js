@@ -91,5 +91,8 @@ while (survivableOrganisms.length < 30)
   subjectNumber++;
 }
 
-console.log(survivableOrganisms);
-console.log("Test");
+console.log("The following specimens of Pila aequor were found to be in possession of DNA strands conducive to longterm survival:");
+for (let i = 0; i < survivableOrganisms.length; i++)
+{
+  console.log(`Specimen #${survivableOrganisms[i].specimenNum} (Strand Sequence: [${survivableOrganisms[i].dna}])`);
+}

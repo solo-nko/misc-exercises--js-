@@ -54,5 +54,36 @@ class Media
 
 class Book extends Media
 {
+   constructor(inputTitle,inputAuthor,inputPages)
+   {
+      super(inputTitle);
+      this._author = inputAuthor;
+      this._pages = inputPages;
+   }
+   get author()
+   {
+      return this._author;
+   }
+   get pages()
+   {
+      return this._pages;
+   }
+}
 
+class Movie extends Media
+{
+   constructor(inputTitle,inputDirector,inputRunTime)
+   {
+      super(inputTitle);
+      this._director = inputDirector;
+      this._runTime = inputRunTime;
+   }
+   get director()
+   {
+      return this._director;
+   }
+   get runTime()
+   {
+      return this._runTime;
+   }
 }

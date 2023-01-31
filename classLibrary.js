@@ -1,4 +1,7 @@
-class Media 
+//This is an exercise in javascript classes and subclasses.
+
+//parent class Media.  It has several properties and accompanying getters and setters that can be inherited by subclasses.
+class Media
 {
    //parent constructor
    constructor(title)
@@ -87,3 +90,26 @@ class Movie extends Media
       return this._runTime;
    }
 }
+
+// Testing
+
+const historyOfEverything = new Book("A Short History of Nearly Everything", "Bill Bryson", 544);
+
+historyOfEverything.toggleCheckOut();
+console.log(historyOfEverything.isCheckedOut);
+
+historyOfEverything.addRating(4);
+historyOfEverything.addRating(5);
+historyOfEverything.addRating(5);
+console.log(historyOfEverything.getAverageRating());
+
+const speed = new Movie("Speed", "Jan de Bont", 116);
+speed.toggleCheckOut();
+
+console.log(speed.isCheckedOut);
+
+speed.addRating(1);
+speed.addRating(1);
+speed.addRating(5);
+console.log(speed.getAverageRating());
+

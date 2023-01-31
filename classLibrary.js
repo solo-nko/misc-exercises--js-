@@ -37,7 +37,8 @@ class Media
    }
    getAverageRating()
    {
-      const ratingSum = this._ratings.reduce((total, current) => {total+current}) //needs testing
+      const ratingSum = this._ratings.reduce((total, current) => total + current); //reduce is used to finding the sum of all values in the array
+      return (ratingSum/this._ratings.length).toFixed(2);
    }
    addRating(newRating)
    {
@@ -53,5 +54,5 @@ class Media
 
 class Book extends Media
 {
-   
+
 }

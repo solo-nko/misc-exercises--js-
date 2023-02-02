@@ -1,4 +1,4 @@
-const subTeacherDirector = [];
+const subTeacherDirector = ['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli'];
 
 class School {
    constructor(name, level, numOfStudents)
@@ -55,7 +55,7 @@ class PrimarySchool extends School
 {
    constructor(name, numOfStudents, pickupPolicy)
    {
-      super(name,'primary',numOfStudents);
+      super(name,"primary",numOfStudents);
       this._pickupPolicy = pickupPolicy;
    }
 
@@ -65,4 +65,26 @@ class PrimarySchool extends School
       return this._pickupPolicy;
    }
 }
+
+class HighSchool extends School
+{
+   constructor(name, numOfStudents, sportsTeams)
+   {
+      super(name,"high school", numOfStudents);
+      this._sportsTeams = sportsTeams;
+   }
+   
+   get sportsTeams()
+   {
+      return this._sportsTeams;
+   }
+}
+
+const lorraineHansbury = new PrimarySchool("Lorraine Hansbury", 514, "Students must be picked up by a parent, guardian, or family member over the age of 13.");
+
+const teamsArray = ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']
+
+const alSmith = new HighSchool("Al E. Smith", 415, teamsArray);
+
+
 

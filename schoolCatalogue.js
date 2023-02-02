@@ -1,3 +1,5 @@
+const subTeacherDirector = [];
+
 class School {
    constructor(name, level, numOfStudents)
    {
@@ -35,7 +37,7 @@ class School {
    //methods
    quickFacts()
    {
-      console.log(`${this.name} educates ${this.numOfStudents} students at the ${this.level} school level.`); //needs testing
+      console.log(`${this.name} educates ${this.numOfStudents} students at the ${this.level} school level.`);
    }
 
    //this method expects an array of strings representing a directory of substitute teachers.  it picks one of the strings at random and presents it.
@@ -43,5 +45,9 @@ class School {
    {
       return subTeachers[(Math.floor(Math.random(subTeachers.length-1)))];
    }
-   
 }
+
+const baxterElem = new School("Baxter","primary", 346);
+
+baxterElem.quickFacts();
+

@@ -1,4 +1,4 @@
-const subTeacherDirector = ['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli'];
+const subTeacherDirectory = ['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli'];
 
 class School {
    constructor(name, level, numOfStudents)
@@ -43,13 +43,10 @@ class School {
    //this method expects an array of strings representing a directory of substitute teachers.  it picks one of the strings at random and presents it.
    static pickSubstituteTeacher(subTeachers)
    {
-      return subTeachers[(Math.floor(Math.random(subTeachers.length-1)))];
+      let output = subTeachers[(Math.floor(Math.random()*subTeachers.length))];
+      return output;
    }
 }
-
-const baxterElem = new School("Baxter","primary", 346);
-
-baxterElem.quickFacts();
 
 class PrimarySchool extends School
 {
@@ -80,11 +77,13 @@ class HighSchool extends School
    }
 }
 
-const lorraineHansbury = new PrimarySchool("Lorraine Hansbury", 514, "Students must be picked up by a parent, guardian, or family member over the age of 13.");
-
 const teamsArray = ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']
 
 const alSmith = new HighSchool("Al E. Smith", 415, teamsArray);
 
+const lorraineHansbury = new PrimarySchool("Lorraine Hansbury", 514, "Students must be picked up by a parent, guardian, or family member over the age of 13.");
+
+lorraineHansbury.quickFacts();
+console.log(`Today's substitute teacher is ${School.pickSubstituteTeacher(subTeacherDirectory)}.`);
 
 

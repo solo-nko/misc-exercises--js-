@@ -6,6 +6,7 @@ class School {
       this._numOfStudents = numOfStudents;
    }
    
+   //getters
    get name()
    {
       return this._name;
@@ -19,6 +20,7 @@ class School {
       return this._numOfStudents;
    }
 
+   //setters
    set numOfStudents(input)
    {
       if (typeof(input) === "number")
@@ -28,6 +30,18 @@ class School {
       {
          console.log("Invalid input: numOfStudents must be set to a number.");
       }
+   }
+
+   //methods
+   quickFacts()
+   {
+      console.log(`${this.name} educates ${this.numOfStudents} students at the ${this.level} school level.`); //needs testing
+   }
+
+   //this method expects an array of strings representing a directory of substitute teachers.  it picks one of the strings at random and presents it.
+   static pickSubstituteTeacher(subTeachers)
+   {
+      return subTeachers[(Math.floor(Math.random(subTeachers.length-1)))];
    }
    
 }

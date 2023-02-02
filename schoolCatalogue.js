@@ -51,3 +51,18 @@ const baxterElem = new School("Baxter","primary", 346);
 
 baxterElem.quickFacts();
 
+class PrimarySchool extends School
+{
+   constructor(name, numOfStudents, pickupPolicy)
+   {
+      super(name,'primary',numOfStudents);
+      this._pickupPolicy = pickupPolicy;
+   }
+
+   //getters
+   get pickupPolicy()
+   {
+      return this._pickupPolicy;
+   }
+}
+

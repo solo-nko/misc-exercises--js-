@@ -1,9 +1,10 @@
 const subTeacherDirectory = ['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli'];
 
 class School {
-   constructor(name, level, numOfStudents)
+   constructor(name, level, city, numOfStudents)
    {
       this._name = name;
+      this._city = city;
       this._level = level;
       this._numOfStudents = numOfStudents;
    }
@@ -12,6 +13,11 @@ class School {
    get name()
    {
       return this._name;
+   }
+
+   get city()
+   {
+      return this._city;
    }
    get level()
    {
@@ -32,6 +38,11 @@ class School {
       {
          console.log("Invalid input: numOfStudents must be set to a number.");
       }
+   }
+
+   set city(input)
+   {
+      this._city = input;
    }
 
    //methods
@@ -77,13 +88,14 @@ class HighSchool extends School
    }
 }
 
+//testing
 const teamsArray = ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']
-
 const alSmith = new HighSchool("Al E. Smith", 415, teamsArray);
-
 const lorraineHansbury = new PrimarySchool("Lorraine Hansbury", 514, "Students must be picked up by a parent, guardian, or family member over the age of 13.");
 
 lorraineHansbury.quickFacts();
 console.log(`Today's substitute teacher is ${School.pickSubstituteTeacher(subTeacherDirectory)}.`);
+
+export default School;
 
 

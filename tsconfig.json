@@ -3,7 +3,7 @@
 	  "target": "es2017",
 	  "module": "commonjs",
 	  "strictNullChecks": true,
-	  "sourceMap": true
+	//   "sourceMap": true
 	},
 	"include": ["**/*.ts"]
  }

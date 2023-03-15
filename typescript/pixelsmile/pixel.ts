@@ -3,19 +3,6 @@ const imageWidth = 20;
 const imageHeight = 8;
 const imageData = createImageData();
 
-// draw head
-drawRectangle(0, 0, 20, 8);
-// eyes
-drawDot(7, 2);
-drawDot(12, 2);
-// smile
-drawDot(4, 4);
-drawHorizontalLine(4, 5, 12);
-drawDot(15, "4");
-
-// output what we drew to the console
-outputImage();
-
 function drawRectangle(
   x: number,
   y: number,
@@ -40,7 +27,8 @@ function drawRectangle(
  * the image.
  */
 function isPointInImage(x: number, y: number): boolean {
-  return x >= 0 && x < imageWidth && y >= 0 && y < imageHeight;
+  let withinBounds = x >= 0 && x < imageWidth && y >= 0 && y < imageHeight;
+	return withinBounds;
 }
 
 /**
@@ -101,3 +89,31 @@ function drawDot(x:number, y:number):void
 		imageData[y*imageWidth+x] = true;		
 	}
 }
+
+
+function drawHorizontalLine(x:number, y:number, length:number):void
+{
+	for (let i = 0; i < length; i++) {
+		drawDot(x+i,y);
+	}
+}
+
+function drawVerticalLine(x:number, y:number, length:number):void
+{
+	for (let i = 0; i < length; i++) {
+		drawDot(x, y+i);
+	}
+}
+
+// draw head
+drawRectangle(0, 0, 20, 8);
+// eyes
+drawDot(7, 2);
+drawDot(12, 2);
+// smile
+drawDot(4, 4);
+drawHorizontalLine(4, 5, 12);
+drawDot(15, 4);
+
+// output what we drew to the console
+outputImage();

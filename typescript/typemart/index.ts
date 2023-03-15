@@ -27,7 +27,10 @@ if (convertToBool(matchingProduct?.preOrder) === true) {
 
 let shippingAddress:string = '2657 Wild Street, Buffalo, New York';
 
-
+/**
+ * Constructs a receipt for the customer.
+ * @returns Nothing, only outputs to console
+ */
 function buildReceipt() {
 	let shipping:number = 5;
 	let taxPercent:number;
